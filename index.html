@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10101b">
+  <meta name="description" content="A private, multimodal dream journal for recording, reflecting, and exploring dreams.">
+  <title>Somnia — Dream Journal</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Somnia home"><span class="brand-mark">✳</span><span>SOMNIA<small>dream journal</small></span></a>
+      <div class="sidebar-label">WORKSPACE</div>
+      <button class="nav-item active" data-view="journal"><span>◷</span> My journal</button>
+      <button class="nav-item" data-view="insights"><span>✧</span> Patterns & insights</button>
+      <button class="nav-item" data-view="library"><span>▧</span> Symbol library</button>
+      <div class="sidebar-bottom">
+        <div class="privacy-note"><span>◈</span><div><b>Your dreams stay yours</b><small>Stored locally on this device in this demo.</small></div></div>
+        <button class="nav-item" data-view="settings"><span>⚙</span> Settings</button>
+        <button class="nav-item" data-view="admin"><span>▤</span> Admin demo</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand">✳ SOMNIA</div>
+        <div class="breadcrumb">YOUR INNER WORLD <span>/</span> <b id="page-name">MY JOURNAL</b></div>
+        <div class="top-actions">
+          <button class="icon-btn" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle theme">☼</button>
+          <button class="icon-btn" id="install-btn" title="Install app" aria-label="Install app" hidden>⇩</button>
+          <div class="avatar">Y</div>
+        </div>
+      </header>
+
+      <section class="view active" id="view-journal">
+        <div class="welcome-row">
+          <div><div class="eyebrow">FRIDAY, NOVEMBER 13, 2026</div><h1>Good evening. <em>What did you dream?</em></h1><p class="subhead">Catch the feeling before the day carries it away.</p></div>
+          <div class="moon-art" aria-hidden="true"><span>☾</span><i></i><b></b></div>
+        </div>
+
+        <div class="record-card">
+          <div class="record-copy">
+            <div class="eyebrow mint">A MOMENT TO REMEMBER</div>
+            <h2>Begin with a voice note.</h2>
+            <p>Speak freely. Fragments, feelings, strange details — it all belongs here.</p>
+            <div class="record-controls">
+              <button class="record-button" id="record-btn"><span class="record-dot"></span><span id="record-label">Start recording</span></button>
+              <button class="secondary-button" id="upload-audio">Upload audio</button>
+              <input type="file" id="audio-file" accept="audio/*" hidden>
+            </div>
+            <div class="record-status" id="record-status">Your microphone stays in your browser until you choose to process a recording.</div>
+          </div>
+          <div class="sound-visual" aria-hidden="true"><div class="orb"><span>✳</span></div><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        </div>
+
+        <div class="section-heading"><div><div class="eyebrow">THE FIRST THREAD</div><h2>Put the dream into words</h2></div><span class="step-pill">01 / 03</span></div>
+        <div class="entry-card">
+          <label for="dream-text">Dream transcript <span>EDIT ANYTHING YOU LIKE</span></label>
+          <textarea id="dream-text" placeholder="I was standing in a train station that floated above the ocean. I felt strangely calm, even though..." rows="5"></textarea>
+          <div class="entry-footer"><span id="word-count">0 words · autosaved locally</span><div><button class="text-button" id="clear-dream">Clear</button><button class="primary-button" id="analyze-btn">Explore this dream <span>↗</span></button></div></div>
+        </div>
+
+        <div class="section-heading recent-heading"><div><div class="eyebrow">YOUR NIGHTSCAPE</div><h2>Recent dreams</h2></div><button class="text-button" data-view="library">View all →</button></div>
+        <div id="recent-list" class="recent-list"><div class="empty-state">Your journal is waiting for its first dream.</div></div>
+      </section>
+
+      <section class="view" id="view-result">
+        <button class="back-link" id="back-journal">← Back to journal</button>
+        <div class="result-header"><div class="eyebrow mint">YOUR DREAM, REIMAGINED</div><h1 id="result-title">The floating station</h1><p id="result-date" class="subhead"></p></div>
+        <div class="dream-art" id="dream-art"><div class="art-placeholder"><span>✧</span><b>Your dreamscape</b><small>AI-generated imagery appears here when an image provider is connected.</small></div></div>
+        <div class="art-caption">AN EMOTIONAL LANDSCAPE · A CREATIVE REFLECTION, NOT A DIAGNOSIS</div>
+        <div class="interpretation-grid">
+          <article class="interpret-card"><div class="eyebrow">01 · THE EMOTIONAL WEATHER</div><h3 id="emotion-title">A threshold between worlds</h3><p id="emotion-copy">Your dream may hold a feeling of transition — being between what is familiar and what is still becoming.</p></article>
+          <article class="interpret-card"><div class="eyebrow">02 · ARCHETYPAL LENS</div><h3 id="archetype-title">The Threshold / The Journey</h3><p id="archetype-copy">In a Jungian-inspired reading, a crossing or journey can symbolize change, individuation, or an invitation to meet an unfamiliar part of yourself.</p></article>
+          <article class="interpret-card"><div class="eyebrow">03 · SYMBOLS TO EXPLORE</div><div id="symbol-chips" class="chips"><button class="chip">Water</button><button class="chip">Train</button><button class="chip">Station</button></div><p class="muted">Symbols are personal. Your own associations matter more than any fixed dictionary.</p></article>
+          <article class="interpret-card prompt-card"><div class="eyebrow">04 · A QUESTION TO CARRY</div><h3 id="reflection-question">What are you ready to leave behind — or step toward?</h3><p>Take a breath. Notice what resonates, and leave what does not.</p></article>
+        </div>
+        <section class="chat-card">
+          <div class="chat-head"><div><div class="eyebrow mint">CONTINUE THE EXPLORATION</div><h2>Ask about a symbol</h2></div><span class="online-dot">● Reflective guide</span></div>
+          <p class="muted">Ask a question about a detail, feeling, or symbol. This demo offers reflective prompts; connect an AI endpoint for generated conversations.</p>
+          <div id="chat-messages" class="chat-messages"><div class="assistant-msg">Which part of this dream stayed with you after waking?</div></div>
+          <form id="chat-form" class="chat-form"><input id="chat-input" placeholder="Why might the ocean have felt so calm?" autocomplete="off"><button class="primary-button" aria-label="Send question">Send ↗</button></form>
+        </section>
+      </section>
+
+      <section class="view" id="view-insights"><div class="eyebrow">LOOKING BACK</div><h1>Patterns & <em>insights</em></h1><p class="subhead">Notice recurring feelings and motifs over time, without forcing a meaning.</p><div class="stats-grid"><div class="stat-card"><small>DREAMS SAVED</small><b id="stat-dreams">0</b><span>In this browser</span></div><div class="stat-card"><small>WORDS RECORDED</small><b id="stat-words">0</b><span>Across your journal</span></div><div class="stat-card"><small>REFLECTION STREAK</small><b>—</b><span>Build a gentle habit</span></div></div><div class="panel"><h2>Recurring themes</h2><p class="muted">As you save more dreams, this space can surface repeated symbols and emotional patterns. No theme is a clinical conclusion.</p><div id="theme-list" class="theme-list">No patterns yet. Your first entry is the beginning.</div></div></section>
+
+      <section class="view" id="view-library"><div class="eyebrow">YOUR ARCHIVE</div><h1>Dream <em>library</em></h1><p class="subhead">Every fragment deserves a place.</p><div id="library-list" class="library-list"></div></section>
+
+      <section class="view" id="view-settings"><div class="eyebrow">MAKE IT YOURS</div><h1>Journal <em>settings</em></h1><div class="panel settings-panel"><label>Language <select id="language-select"><option value="en">English</option><option value="hi">हिन्दी (Hindi)</option><option value="or">ଓଡ଼ିଆ (Odia)</option><option value="es">Español</option><option value="fr">Français</option></select></label><p class="muted">Interface labels are currently in English. Multilingual transcription and AI responses require a configured speech/AI provider.</p><label class="toggle-row"><span><b>Dark appearance</b><small>Use the night-friendly palette</small></span><input type="checkbox" id="dark-setting"></label><button class="secondary-button" id="export-btn">Export my journal (JSON)</button><button class="danger-button" id="delete-all">Delete all local entries</button></div></section>
+
+      <section class="view" id="view-admin"><div class="eyebrow">DEMO CONSOLE</div><h1>Admin <em>overview</em></h1><p class="subhead">Static preview only. No user accounts, server, or remote data are connected.</p><div class="stats-grid"><div class="stat-card"><small>LOCAL ENTRIES</small><b id="admin-entries">0</b><span>On this device</span></div><div class="stat-card"><small>AI PROVIDER</small><b>Offline</b><span>Configure backend to enable</span></div><div class="stat-card"><small>APP STATUS</small><b>Demo</b><span>GitHub Pages compatible</span></div></div><div class="panel"><h2>Provider configuration checklist</h2><ul class="check-list"><li>Deploy a secure backend or serverless API.</li><li>Keep AI and image-provider API keys on the server.</li><li>Add authentication, consent, retention and deletion controls.</li><li>Review privacy and age-appropriate language before launch.</li></ul></div></section>
+
+      <footer>© 2026 SOMNIA · A GENTLE SPACE FOR THE UNCONSCIOUS <span>Made for curious minds ✳</span></footer>
+    </main>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
